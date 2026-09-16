@@ -1,0 +1,26 @@
+import codecs
+import base64
+import random
+def cipher():
+    encoded = input('Enter message to cipher:')
+    n = int(input("Enter number of times to cipher:"))
+    key = ''
+    i = random.randint(0,2)
+    if i == 0:
+        ciphmsg = codecs.encode(encoded,'rot_13')
+        encoded = ciphmsg
+        key+='0'
+    if i == 1:
+        ciphbyte = base64.b64encode(encoded.encode('utf-8'))
+        ciphmsg = ciphbyte.decode('utf-8')
+        encoded = ciphmsg
+        key+='1'
+    if i == 2:
+        ciphmsg = encoded.encode('utf-8').hex()
+        encoded = ciphmsg
+        key+='2'
+    print("Ciphered message generated:",encoded)
+    print("Key generated:",key)
+cipher()
+
+    
